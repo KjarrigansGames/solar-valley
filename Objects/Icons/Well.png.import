@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GWJ-38-Theme.png-4a3cc616fb60a95a141e61e1660a7e3a.stex"
+path="res://.import/Well.png-1f5e9f1dda930696168908a06a153996.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Intro/GWJ-38-Theme.png"
-dest_files=[ "res://.import/GWJ-38-Theme.png-4a3cc616fb60a95a141e61e1660a7e3a.stex" ]
+source_file="res://Objects/Icons/Well.png"
+dest_files=[ "res://.import/Well.png-1f5e9f1dda930696168908a06a153996.stex" ]
 
 [params]
 

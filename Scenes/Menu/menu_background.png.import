@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/menu_background.png-77cdc66c63bfeed414e4bdef8b1bc6a2.stex"
+path="res://.import/menu_background.png-9fe3fe6c660efcb2235c1c441a32029c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/menu_background.png"
-dest_files=[ "res://.import/menu_background.png-77cdc66c63bfeed414e4bdef8b1bc6a2.stex" ]
+source_file="res://Scenes/Menu/menu_background.png"
+dest_files=[ "res://.import/menu_background.png-9fe3fe6c660efcb2235c1c441a32029c.stex" ]
 
 [params]
 

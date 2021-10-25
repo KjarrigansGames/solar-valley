@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GWJ-38-Theme-c.webp-6d5b762d1f74e08839c6376f2ab248ea.stex"
+path="res://.import/Plant.png-4738b2338537065a09c593223cbdf25b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Intro/GWJ-38-Theme-c.webp"
-dest_files=[ "res://.import/GWJ-38-Theme-c.webp-6d5b762d1f74e08839c6376f2ab248ea.stex" ]
+source_file="res://Objects/Icons/Plant.png"
+dest_files=[ "res://.import/Plant.png-4738b2338537065a09c593223cbdf25b.stex" ]
 
 [params]
 
