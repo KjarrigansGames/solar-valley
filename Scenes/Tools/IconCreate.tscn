@@ -22,12 +22,12 @@ fov = 36.5
 [node name="Tiles" type="Spatial" parent="."]
 
 [node name="House" parent="Tiles" instance=ExtResource( 2 )]
+visible = false
 
 [node name="Plant" parent="Tiles" instance=ExtResource( 1 )]
 visible = false
 
 [node name="Solar" parent="Tiles" instance=ExtResource( 3 )]
-visible = false
 
 [node name="Well" parent="Tiles" instance=ExtResource( 4 )]
 transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0 )

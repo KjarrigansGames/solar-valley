@@ -1,6 +1,6 @@
 extends Spatial
 
-export var icon_size = 300
+export var icon_size = 150
 
 var current_tile = 0
 onready var tiles = $Tiles.get_children()
