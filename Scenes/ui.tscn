@@ -1,297 +1,107 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Objects/UI/Plant_Button.png" type="Texture" id=1]
-[ext_resource path="res://Objects/UI/house_button.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/UI/TileButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/ui.gd" type="Script" id=3]
-[ext_resource path="res://Objects/UI/solar_button.png" type="Texture" id=4]
-[ext_resource path="res://Objects/UI/house_button_toggled.png" type="Texture" id=5]
-[ext_resource path="res://Objects/UI/Plant_Button_Toggled.png" type="Texture" id=6]
-[ext_resource path="res://Objects/UI/solar_button_toggled.png" type="Texture" id=7]
 [ext_resource path="res://Objects/UI/coin_small.png" type="Texture" id=8]
 [ext_resource path="res://Objects/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Objects/UI/massiveMultiplayer.png" type="Texture" id=10]
-[ext_resource path="res://Objects/UI/Well_Button.png" type="Texture" id=11]
-[ext_resource path="res://Objects/UI/Well_Button_Toggled.png" type="Texture" id=12]
 [ext_resource path="res://Objects/UI/glassPanel_cornerTL.png" type="Texture" id=13]
 [ext_resource path="res://Objects/fonts/font.tres" type="DynamicFont" id=14]
-[ext_resource path="res://Objects/UI/Plant_2_Button_disabled.png" type="Texture" id=15]
-[ext_resource path="res://Objects/UI/Plant_2_Button.png" type="Texture" id=16]
-[ext_resource path="res://Objects/UI/Plant_3_Button.png" type="Texture" id=17]
-[ext_resource path="res://Objects/UI/Plant_2_Button_toggled.png" type="Texture" id=18]
-[ext_resource path="res://Objects/UI/Plant_3_Button_toggled.png" type="Texture" id=19]
-[ext_resource path="res://Objects/UI/Plant_3_Button_disabled.png" type="Texture" id=20]
-[ext_resource path="res://Objects/UI/solar_button_disabled.png" type="Texture" id=21]
-[ext_resource path="res://Objects/UI/Well_Button_disabled.png" type="Texture" id=22]
+
+[sub_resource type="ButtonGroup" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
 font_data = ExtResource( 9 )
 
-[node name="Control" type="MarginContainer"]
+[node name="UI" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.218567
-margin_right = 0.218628
 mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1440.0
-margin_bottom = 900.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="Screen" type="HBoxContainer" parent="."]
 margin_right = 1440.0
 margin_bottom = 900.0
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer"]
-margin_right = 124.0
+[node name="Left" type="MarginContainer" parent="Screen"]
+margin_right = 174.0
 margin_bottom = 900.0
 custom_constants/margin_left = 10
 
-[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/MarginContainer"]
+[node name="Bar" type="CenterContainer" parent="Screen/Left"]
 margin_left = 10.0
-margin_right = 124.0
+margin_right = 174.0
 margin_bottom = 900.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/MarginContainer/CenterContainer"]
+[node name="Build" type="PanelContainer" parent="Screen/Left/Bar"]
 margin_top = 143.0
-margin_right = 114.0
+margin_right = 164.0
 margin_bottom = 757.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer"]
+[node name="Menu" type="VBoxContainer" parent="Screen/Left/Bar/Build"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 107.0
+margin_right = 157.0
 margin_bottom = 607.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HouseButton" type="TextureButton" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-toggle_mode = true
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 5 )
+[node name="House" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
+group = SubResource( 2 )
+cost = 200
 
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/HouseButton"]
-margin_left = 18.3848
-margin_top = 77.1248
-margin_right = 58.3848
-margin_bottom = 117.125
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/HouseButton"]
-margin_left = 43.8405
-margin_top = 70.7107
-margin_right = 91.8405
-margin_bottom = 99.7107
-custom_fonts/font = ExtResource( 14 )
-text = "300"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlantButton" type="TextureButton" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 200.0
-toggle_mode = true
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
-
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/PlantButton"]
-margin_left = 18.3848
-margin_top = 77.1248
-margin_right = 58.3848
-margin_bottom = 117.125
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/PlantButton"]
-margin_left = 43.8405
-margin_top = 70.7107
-margin_right = 91.8405
-margin_bottom = 99.7107
-custom_fonts/font = ExtResource( 14 )
-text = "100"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Plant2Button" type="TextureButton" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 200.0
-margin_right = 100.0
+[node name="Field" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
+margin_top = 150.0
 margin_bottom = 300.0
-toggle_mode = true
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 18 )
-texture_disabled = ExtResource( 15 )
+group = SubResource( 2 )
+cost = 100
 
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Plant2Button"]
-margin_left = 18.3848
-margin_top = 77.1248
-margin_right = 58.3848
-margin_bottom = 117.125
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Plant2Button"]
-margin_left = 43.8405
-margin_top = 70.7107
-margin_right = 91.8405
-margin_bottom = 99.7107
-custom_fonts/font = ExtResource( 14 )
-text = "100"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SolarButton" type="TextureButton" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Solar" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
 margin_top = 300.0
-margin_right = 100.0
-margin_bottom = 400.0
-toggle_mode = true
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 7 )
-texture_disabled = ExtResource( 21 )
+margin_bottom = 450.0
+group = SubResource( 2 )
+cost = 300
+unlock_population = 75
 
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/SolarButton"]
-margin_left = 18.3848
-margin_top = 77.1248
-margin_right = 58.3848
-margin_bottom = 117.125
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/SolarButton"]
-margin_left = 43.8405
-margin_top = 70.7107
-margin_right = 91.8405
-margin_bottom = 99.7107
-custom_fonts/font = ExtResource( 14 )
-text = "200"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WellButton" type="TextureButton" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 400.0
-margin_right = 100.0
-margin_bottom = 500.0
-toggle_mode = true
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_disabled = ExtResource( 22 )
-
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/WellButton"]
-margin_left = 18.3848
-margin_top = 77.1248
-margin_right = 58.3848
-margin_bottom = 117.125
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/WellButton"]
-margin_left = 43.8405
-margin_top = 70.7107
-margin_right = 91.8405
-margin_bottom = 99.7107
-custom_fonts/font = ExtResource( 14 )
-text = "200"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Plant3Button" type="TextureButton" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 500.0
-margin_right = 100.0
+[node name="Well" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
+margin_top = 450.0
 margin_bottom = 600.0
-toggle_mode = true
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 19 )
-texture_disabled = ExtResource( 20 )
+group = SubResource( 2 )
+cost = 300
+unlock_population = 100
 
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Plant3Button"]
-margin_left = 18.3848
-margin_top = 77.1248
-margin_right = 58.3848
-margin_bottom = 117.125
-rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 8 )
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Plant3Button"]
-margin_left = 43.8405
-margin_top = 70.7107
-margin_right = 91.8405
-margin_bottom = 99.7107
-custom_fonts/font = ExtResource( 14 )
-text = "150"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer"]
-margin_left = 136.0
+[node name="Right" type="VSplitContainer" parent="Screen"]
+margin_left = 178.0
 margin_right = 1440.0
 margin_bottom = 900.0
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/VSplitContainer"]
-margin_right = 1304.0
+[node name="TopBar" type="HBoxContainer" parent="Screen/Right"]
+margin_right = 1262.0
 margin_bottom = 50.0
 mouse_filter = 2
 custom_constants/separation = 15
 alignment = 2
 
-[node name="CenterContainer_empty" type="CenterContainer" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 346.0
-margin_right = 796.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 450, 0 )
-
-[node name="ClockLabel" type="Label" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 811.0
-margin_top = 10.0
-margin_right = 918.0
-margin_bottom = 39.0
+[node name="ClockLabel" type="Label" parent="Screen/Right/TopBar"]
+margin_left = 863.0
+margin_top = 15.0
+margin_right = 937.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 14 )
 text = "3 o'clock"
 align = 2
@@ -299,11 +109,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Seperator" type="Label" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 933.0
-margin_top = 10.0
-margin_right = 940.0
-margin_bottom = 39.0
+[node name="Seperator" type="Label" parent="Screen/Right/TopBar"]
+margin_left = 952.0
+margin_top = 15.0
+margin_right = 957.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 14 )
 text = "|"
 align = 2
@@ -311,11 +121,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DayLabel" type="Label" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 955.0
-margin_top = 10.0
-margin_right = 1027.0
-margin_bottom = 39.0
+[node name="DayLabel" type="Label" parent="Screen/Right/TopBar"]
+margin_left = 972.0
+margin_top = 15.0
+margin_right = 1020.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 14 )
 text = "Day 1"
 align = 2
@@ -323,12 +133,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 1042.0
-margin_right = 1082.0
+[node name="CenterContainer" type="CenterContainer" parent="Screen/Right/TopBar"]
+margin_left = 1035.0
+margin_right = 1075.0
 margin_bottom = 50.0
 
-[node name="MoneyIcon" type="TextureRect" parent="HSplitContainer/VSplitContainer/HBoxContainer/CenterContainer"]
+[node name="MoneyIcon" type="TextureRect" parent="Screen/Right/TopBar/CenterContainer"]
 margin_top = 5.0
 margin_right = 40.0
 margin_bottom = 45.0
@@ -338,11 +148,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MoneyLabel" type="Label" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 1097.0
-margin_top = 10.0
-margin_right = 1161.0
-margin_bottom = 39.0
+[node name="MoneyLabel" type="Label" parent="Screen/Right/TopBar"]
+margin_left = 1090.0
+margin_top = 15.0
+margin_right = 1134.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 14 )
 text = "0000"
 align = 2
@@ -350,12 +160,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer2" type="CenterContainer" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 1176.0
-margin_right = 1226.0
+[node name="CenterContainer2" type="CenterContainer" parent="Screen/Right/TopBar"]
+margin_left = 1149.0
+margin_right = 1199.0
 margin_bottom = 50.0
 
-[node name="PeopleIcon" type="TextureRect" parent="HSplitContainer/VSplitContainer/HBoxContainer/CenterContainer2"]
+[node name="PeopleIcon" type="TextureRect" parent="Screen/Right/TopBar/CenterContainer2"]
 margin_right = 50.0
 margin_bottom = 50.0
 texture = ExtResource( 10 )
@@ -363,11 +173,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PeopleLabel" type="Label" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 1241.0
-margin_top = 10.0
-margin_right = 1289.0
-margin_bottom = 39.0
+[node name="PeopleLabel" type="Label" parent="Screen/Right/TopBar"]
+margin_left = 1214.0
+margin_top = 15.0
+margin_right = 1247.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 14 )
 text = "000"
 align = 2
@@ -375,46 +185,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/VSplitContainer/HBoxContainer"]
-margin_left = 1304.0
-margin_right = 1304.0
+[node name="MarginContainer" type="MarginContainer" parent="Screen/Right/TopBar"]
+margin_left = 1262.0
+margin_right = 1262.0
 margin_bottom = 50.0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer/VSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Screen/Right"]
 margin_top = 62.0
-margin_right = 1304.0
+margin_right = 1262.0
 margin_bottom = 900.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer_empty" type="CenterContainer" parent="HSplitContainer/VSplitContainer/HSplitContainer"]
-margin_right = 1002.0
+[node name="CenterContainer_empty" type="CenterContainer" parent="Screen/Right/HSplitContainer"]
+margin_right = 960.0
 margin_bottom = 838.0
 rect_min_size = Vector2( 600, 0 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/VSplitContainer/HSplitContainer"]
-margin_left = 1014.0
-margin_right = 1304.0
+[node name="VSplitContainer" type="VSplitContainer" parent="Screen/Right/HSplitContainer"]
+margin_left = 972.0
+margin_right = 1262.0
 margin_bottom = 838.0
 
-[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/VSplitContainer/HSplitContainer/VSplitContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Screen/Right/HSplitContainer/VSplitContainer"]
 margin_right = 290.0
 margin_bottom = 616.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/VSplitContainer/HSplitContainer/VSplitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Screen/Right/HSplitContainer/VSplitContainer"]
 margin_top = 628.0
 margin_right = 290.0
 margin_bottom = 838.0
 custom_constants/margin_right = 10
 custom_constants/margin_bottom = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HSplitContainer/VSplitContainer/HSplitContainer/VSplitContainer/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Screen/Right/HSplitContainer/VSplitContainer/MarginContainer"]
 margin_right = 280.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 280, 200 )
@@ -428,7 +238,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HSplitContainer/VSplitContainer/HSplitContainer/VSplitContainer/MarginContainer/NinePatchRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Screen/Right/HSplitContainer/VSplitContainer/MarginContainer/NinePatchRect"]
 margin_left = 10.0595
 margin_top = 9.0
 margin_right = 286.06
@@ -441,10 +251,3 @@ Has power"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="pressed" from="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/HouseButton" to="." method="_on_HouseButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/PlantButton" to="." method="_on_PlantButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Plant2Button" to="." method="_on_Plant2Button_pressed"]
-[connection signal="pressed" from="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/SolarButton" to="." method="_on_SolarButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/WellButton" to="." method="_on_WellButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/MarginContainer/CenterContainer/PanelContainer/VBoxContainer/Plant3Button" to="." method="_on_Plant3Button_pressed"]

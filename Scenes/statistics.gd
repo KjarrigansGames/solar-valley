@@ -1,12 +1,12 @@
 extends Node
 
-export var money     : float
-export var people    : int
+export var money = 0.0
+export var people = 0
 export var day = 1
 export var night  = true
 
-var show_desciption = false
-var description_text = ""
+var show_desciption = true
+var description_text = "Hello World"
 var description_height = 192
 
 var clock = 0
