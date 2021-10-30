@@ -1,18 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://Objects/UI/glassPanel_cornerTL.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/TileButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/ui.gd" type="Script" id=3]
-[ext_resource path="res://Objects/UI/coin_small.png" type="Texture" id=8]
-[ext_resource path="res://Objects/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Objects/UI/massiveMultiplayer.png" type="Texture" id=10]
-[ext_resource path="res://Objects/UI/glassPanel_cornerTL.png" type="Texture" id=13]
-[ext_resource path="res://Objects/fonts/font.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Objects/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Objects/fonts/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/UI/ui.gd" type="Script" id=5]
+[ext_resource path="res://Objects/UI/coin_small.png" type="Texture" id=6]
+[ext_resource path="res://Objects/UI/massiveMultiplayer.png" type="Texture" id=7]
+[ext_resource path="res://Objects/Icons/Well.png" type="Texture" id=8]
+[ext_resource path="res://Objects/Icons/Solar.png" type="Texture" id=9]
+[ext_resource path="res://Objects/Icons/Plant.png" type="Texture" id=10]
 
-[sub_resource type="ButtonGroup" id=2]
+[sub_resource type="ButtonGroup" id=1]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 21
-font_data = ExtResource( 9 )
+font_data = ExtResource( 3 )
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -20,7 +23,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,26 +62,33 @@ __meta__ = {
 }
 
 [node name="House" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
-group = SubResource( 2 )
+group = SubResource( 1 )
+tile_type = 2
 cost = 200
 
 [node name="Field" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
 margin_top = 150.0
 margin_bottom = 300.0
-group = SubResource( 2 )
+group = SubResource( 1 )
+icon = ExtResource( 10 )
+tile_type = 1
 cost = 100
 
 [node name="Solar" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
 margin_top = 300.0
 margin_bottom = 450.0
-group = SubResource( 2 )
+group = SubResource( 1 )
+icon = ExtResource( 9 )
+tile_type = 3
 cost = 300
 unlock_population = 75
 
 [node name="Well" parent="Screen/Left/Bar/Build/Menu" instance=ExtResource( 2 )]
 margin_top = 450.0
 margin_bottom = 600.0
-group = SubResource( 2 )
+group = SubResource( 1 )
+icon = ExtResource( 8 )
+tile_type = 4
 cost = 300
 unlock_population = 100
 
@@ -98,11 +108,11 @@ custom_constants/separation = 15
 alignment = 2
 
 [node name="ClockLabel" type="Label" parent="Screen/Right/TopBar"]
-margin_left = 863.0
-margin_top = 15.0
-margin_right = 937.0
-margin_bottom = 35.0
-custom_fonts/font = ExtResource( 14 )
+margin_left = 769.0
+margin_top = 10.0
+margin_right = 876.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
 text = "3 o'clock"
 align = 2
 __meta__ = {
@@ -110,11 +120,11 @@ __meta__ = {
 }
 
 [node name="Seperator" type="Label" parent="Screen/Right/TopBar"]
-margin_left = 952.0
-margin_top = 15.0
-margin_right = 957.0
-margin_bottom = 35.0
-custom_fonts/font = ExtResource( 14 )
+margin_left = 891.0
+margin_top = 10.0
+margin_right = 898.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
 text = "|"
 align = 2
 __meta__ = {
@@ -122,11 +132,11 @@ __meta__ = {
 }
 
 [node name="DayLabel" type="Label" parent="Screen/Right/TopBar"]
-margin_left = 972.0
-margin_top = 15.0
-margin_right = 1020.0
-margin_bottom = 35.0
-custom_fonts/font = ExtResource( 14 )
+margin_left = 913.0
+margin_top = 10.0
+margin_right = 985.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
 text = "Day 1"
 align = 2
 __meta__ = {
@@ -134,26 +144,26 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Screen/Right/TopBar"]
-margin_left = 1035.0
-margin_right = 1075.0
+margin_left = 1000.0
+margin_right = 1040.0
 margin_bottom = 50.0
 
 [node name="MoneyIcon" type="TextureRect" parent="Screen/Right/TopBar/CenterContainer"]
 margin_top = 5.0
 margin_right = 40.0
 margin_bottom = 45.0
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MoneyLabel" type="Label" parent="Screen/Right/TopBar"]
-margin_left = 1090.0
-margin_top = 15.0
-margin_right = 1134.0
-margin_bottom = 35.0
-custom_fonts/font = ExtResource( 14 )
+margin_left = 1055.0
+margin_top = 10.0
+margin_right = 1119.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
 text = "0000"
 align = 2
 __meta__ = {
@@ -161,24 +171,24 @@ __meta__ = {
 }
 
 [node name="CenterContainer2" type="CenterContainer" parent="Screen/Right/TopBar"]
-margin_left = 1149.0
-margin_right = 1199.0
+margin_left = 1134.0
+margin_right = 1184.0
 margin_bottom = 50.0
 
 [node name="PeopleIcon" type="TextureRect" parent="Screen/Right/TopBar/CenterContainer2"]
 margin_right = 50.0
 margin_bottom = 50.0
-texture = ExtResource( 10 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PeopleLabel" type="Label" parent="Screen/Right/TopBar"]
-margin_left = 1214.0
-margin_top = 15.0
+margin_left = 1199.0
+margin_top = 10.0
 margin_right = 1247.0
-margin_bottom = 35.0
-custom_fonts/font = ExtResource( 14 )
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
 text = "000"
 align = 2
 __meta__ = {
@@ -228,7 +238,7 @@ custom_constants/margin_bottom = 10
 margin_right = 280.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 280, 200 )
-texture = ExtResource( 13 )
+texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 100, 100 )
 patch_margin_left = 14
 patch_margin_top = 14
@@ -244,7 +254,7 @@ margin_top = 9.0
 margin_right = 286.06
 margin_bottom = 174.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "Inhabitants: 10
 Consumes 10 plants/s
 Has power"

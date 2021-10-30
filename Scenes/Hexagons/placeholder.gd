@@ -28,14 +28,11 @@ onready var solar_mesh   = $tmpParent/solarpanel
 onready var grass_mesh   = $tmpParent/grass
 onready var well_mesh    = $tmpParent/building_well
 
-
 func _ready():
   set_default_visibility()
 
-
 func tick():
   pass
-
 
 func set_default_visibility():
   house_mesh.visible   = false
@@ -46,50 +43,34 @@ func set_default_visibility():
   well_mesh.visible    = false
   grass_mesh.visible   = true
 
-
 func _process(_delta):
   if Input.is_action_just_pressed("ui_rotate") and is_hovered:
     rotate_y(PI/3)
 
-
 func _on_grass_mouse_entered():
   match Statistics.selected_type:
-    "plant":
+    Statistics.TILE.PLANT:
       plant_1_mesh.visible = true
       plant_2_mesh.visible = false
       plant_3_mesh.visible = false
       house_mesh.visible   = false
       solar_mesh.visible   = false
       well_mesh.visible    = false
-    "plant2":
-      plant_1_mesh.visible = false
-      plant_2_mesh.visible = true
-      plant_3_mesh.visible = false
-      house_mesh.visible   = false
-      solar_mesh.visible   = false
-      well_mesh.visible    = false
-    "plant3":
-      plant_1_mesh.visible = false
-      plant_2_mesh.visible = false
-      plant_3_mesh.visible = true
-      house_mesh.visible   = false
-      solar_mesh.visible   = false
-      well_mesh.visible    = false
-    "house":
+    Statistics.TILE.HOUSE:
       plant_1_mesh.visible = false
       plant_2_mesh.visible = false
       plant_3_mesh.visible = false
       house_mesh.visible   = true
       solar_mesh.visible   = false
       well_mesh.visible    = false
-    "solar":
+    Statistics.TILE.SOLAR:
       house_mesh.visible   = false
       plant_1_mesh.visible = false
       plant_2_mesh.visible = false
       plant_3_mesh.visible = false
       solar_mesh.visible   = true
       well_mesh.visible    = false
-    "well":
+    Statistics.TILE.WELL:
       solar_mesh.visible   = false
       plant_1_mesh.visible = false
       plant_2_mesh.visible = false
@@ -99,11 +80,9 @@ func _on_grass_mouse_entered():
   grass_mesh.visible = false
   is_hovered = true
 
-
 func _on_grass_mouse_exited():
   set_default_visibility()
   is_hovered = false
-
 
 func _input(event):
   if event is InputEventMouseButton:
@@ -112,26 +91,20 @@ func _input(event):
       rng.randomize()
       var random = rng.randf()
       if Statistics.clock > 0 and Statistics.clock < 3 and random <= 0.3:
-        buy_hexagon(graveyard_preload.instance(), 0)
+        buy_hexagon(graveyard_preload, 0)
       else:
         match Statistics.selected_type:
-          "plant":
-            buy_hexagon(plant_1_preload.instance(), cost_plant)
-          "plant2":
-            buy_hexagon(plant_2_preload.instance(), cost_plant2)
-          "plant3":
-            buy_hexagon(plant_3_preload.instance(), cost_plant3)
-          "house":
-            hex = house_preload.instance()
-            hex.connect("update_people", Statistics, "update_people")
-            buy_hexagon(hex, cost_house)
-          "solar":
-            buy_hexagon(solar_preload.instance(), cost_solar)
-          "well":
-            buy_hexagon(well_preload.instance(), cost_well)
-
+          Statistics.TILE.PLANT:
+            buy_hexagon(plant_1_preload, cost_plant)
+          Statistics.TILE.HOUSE:
+            buy_hexagon(house_preload, cost_house)
+          Statistics.TILE.SOLAR:
+            buy_hexagon(solar_preload, cost_solar)
+          Statistics.TILE.WELL:
+            buy_hexagon(well_preload, cost_well)
 
 func buy_hexagon(hexagon, cost):
+  hexagon = hexagon.instance()
   if (Statistics.money >= cost):
     Statistics.money -= cost
     hexagon.set_translation(translation)
